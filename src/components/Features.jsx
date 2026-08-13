@@ -1,6 +1,6 @@
 const features = [
-  { icon: "🥩", title: "Fresh Ingredients",  desc: "We source locally and never freeze our patties. Every bite is made fresh." },
-  { icon: "⚡", title: "Lightning Fast",      desc: "Order ready in under 5 minutes. We respect your time." },
+  { icon: "🥩", title: "Fresh Ingredients",  desc: "We source locally . Every bite is made fresh." },
+  { icon: "⚡", title: "Lightning Fast",      desc: "Order ready in under few minutes. We respect your time." },
   { icon: "💰", title: "Great Value",         desc: "Premium taste without the premium price tag. Always." },
   { icon: "🌿", title: "Veggie Friendly",     desc: "Dedicated plant-based options for every menu category." },
 ];
