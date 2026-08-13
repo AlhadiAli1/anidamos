@@ -5,7 +5,7 @@ const WHATSAPP_NUMBER = "96171919234";
 
 function buildMessage(items, orderType) {
   const lines = items.map(
-    (i) => `• ${i.name} x${i.qty}  —  ${i.price}`
+    (i) => `• ${i.name}${i.size ? ` (${i.size})` : ''} x${i.qty}  —  ${i.price}`
   );
   const typeLabel = orderType === "delivery" ? "🚗 Delivery" : "🪑 Dine In";
   return (
@@ -75,7 +75,7 @@ export default function CartDrawer() {
                 <li key={item.name} className="cart-item">
                   <img src={item.img} alt={item.name} className="cart-item-img" />
                   <div className="cart-item-info">
-                    <p className="cart-item-name">{item.name}</p>
+                    <p className="cart-item-name">{item.name}{item.size ? ` (${item.size})` : ''}</p>
                     <p className="cart-item-price">{item.price}</p>
                   </div>
                   <div className="cart-qty">

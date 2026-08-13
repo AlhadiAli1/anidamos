@@ -5,13 +5,15 @@ const CartCtx = createContext(null);
 export function CartProvider({ children }) {
   const [cart, setCart] = useState({});
 
-  const add = (item) =>
+  const add = (item) => {
+    const key = item.size ? `${item.name}|${item.size}` : item.name;
     setCart((prev) => ({
       ...prev,
-      [item.name]: prev[item.name]
-        ? { ...prev[item.name], qty: prev[item.name].qty + 1 }
+      [key]: prev[key]
+        ? { ...prev[key], qty: prev[key].qty + 1 }
         : { ...item, qty: 1 },
     }));
+  };
 
   const adjust = (name, delta) =>
     setCart((prev) => {

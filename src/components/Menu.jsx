@@ -13,7 +13,19 @@ const TABS = [
 
 export default function Menu() {
   const [active, setActive] = useState("burgers");
+  const [selectedSizes, setSelectedSizes] = useState({});
   const { add } = useCart();
+
+  const getSizeFor = (name) => selectedSizes[name] || "M";
+
+  const handleAdd = (item) => {
+    if (item.sizes) {
+      const size = getSizeFor(item.name);
+      add({ ...item, price: item.sizes[size], size });
+    } else {
+      add(item);
+    }
+  };
 
   return (
     <section className="section" id="menu">
@@ -43,9 +55,24 @@ export default function Menu() {
               <div className="menu-card-body">
                 <h3>{item.name}</h3>
                 <p>{item.desc}</p>
+                {item.sizes && (
+                  <div className="size-selector">
+                    {Object.keys(item.sizes).map((s) => (
+                      <button
+                        key={s}
+                        className={`size-btn${getSizeFor(item.name) === s ? " active" : ""}`}
+                        onClick={() => setSelectedSizes((prev) => ({ ...prev, [item.name]: s }))}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <div className="menu-card-footer">
-                  <span className="price">{item.price}</span>
-                  <button className="add-btn" onClick={() => add(item)} aria-label={`Add ${item.name}`} title="Add to order">+</button>
+                  <span className="price">
+                    {item.sizes ? item.sizes[getSizeFor(item.name)] : item.price}
+                  </span>
+                  <button className="add-btn" onClick={() => handleAdd(item)} aria-label={`Add ${item.name}`} title="Add to order">+</button>
                 </div>
               </div>
             </div>

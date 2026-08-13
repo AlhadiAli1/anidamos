@@ -113,6 +113,26 @@ ul  { list-style: none; }
 .menu-card-body p  { font-size: .85rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
 .menu-card-footer { display: flex; align-items: center; justify-content: space-between; }
 .price { font-size: 1.1rem; font-weight: 900; color: var(--primary); }
+
+.size-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.size-btn {
+  padding: 5px 18px;
+  border-radius: 20px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.size-btn.active { background: var(--primary); color: #fff; }
+.size-btn:not(.active):hover { background: rgba(230,57,70,.08); }
 .add-btn { background: var(--primary); color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; transition: background var(--transition), transform var(--transition); display: flex; align-items: center; justify-content: center; }
 .add-btn:hover { background: var(--primary-dk); transform: scale(1.1); }
 
