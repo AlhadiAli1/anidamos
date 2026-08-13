@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { menuData } from "../data/menuData";
+import { useCart } from "../context/CartContext";
 
-const TABS = ["burgers", "sides", "drinks", "desserts"];
+const TABS = [
+  { key: "burgers", label: "Burgers" },
+  { key: "sandwiches", label: "Sandwiches" },
+  { key: "pizza", label: "Pizza" },
+  { key: "mashiweh", label: "Mashiweh" },
+  { key: "crispy", label: "Crispy, Wings & Shrimps" },
+  { key: "sides", label: "Sides" },
+];
 
 export default function Menu() {
   const [active, setActive] = useState("burgers");
+  const { add } = useCart();
 
   return (
     <section className="section" id="menu">
@@ -12,17 +21,17 @@ export default function Menu() {
         <div className="section-header">
           <span className="section-tag">Our Menu</span>
           <h2>What Are You Craving?</h2>
-          <p>Something for everyone – from stacked burgers to loaded fries.</p>
+          <p>Something for everyone – from stacked burgers to wood-fired pizza.</p>
         </div>
 
         <div className="menu-tabs">
-          {TABS.map((tab) => (
+          {TABS.map(({ key, label }) => (
             <button
-              key={tab}
-              className={`tab-btn${active === tab ? " active" : ""}`}
-              onClick={() => setActive(tab)}
+              key={key}
+              className={`tab-btn${active === key ? " active" : ""}`}
+              onClick={() => setActive(key)}
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {label}
             </button>
           ))}
         </div>
@@ -36,7 +45,7 @@ export default function Menu() {
                 <p>{item.desc}</p>
                 <div className="menu-card-footer">
                   <span className="price">{item.price}</span>
-                  <button className="add-btn" aria-label={`Add ${item.name}`} title="Add to order">+</button>
+                  <button className="add-btn" onClick={() => add(item)} aria-label={`Add ${item.name}`} title="Add to order">+</button>
                 </div>
               </div>
             </div>
