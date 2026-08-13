@@ -198,7 +198,8 @@ ul  { list-style: none; }
    RESPONSIVE
    ============================ */
 @media (max-width: 900px) {
-  .hero { flex-direction: column; text-align: center; padding-top: 100px; padding-bottom: 60px; gap: 32px; }
+  .hero-inner { flex-direction: column; text-align: center; gap: 32px; }
+  .hero { padding-top: 100px; padding-bottom: 60px; }
   .hero-cta { justify-content: center; }
   .hero-image { order: -1; }
   .hero-img-wrap { width: 220px; height: 220px; }
