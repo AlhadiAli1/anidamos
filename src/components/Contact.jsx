@@ -10,7 +10,7 @@ export default function Contact() {
         <div className="contact-info-centered">
           <div className="info-item">
             <span className="info-icon">📍</span>
-            <div><strong>Location</strong><p>Baraachit / Hadikat Alyasamine</p></div>
+            <div><strong>Location</strong><p>برعشيت/حديقة الياسمين</p></div>
           </div>
           <div className="info-item">
             <span className="info-icon">📞</span>

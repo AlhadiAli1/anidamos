@@ -1,32 +1,58 @@
+import { useCart } from "../context/CartContext";
+
 const offers = [
   {
     badge: "🔥 Best Seller",
     featured: true,
-    title: "Classic Combo",
-    desc: "Signature burger + fries + any drink",
-    oldPrice: "$12.99",
-    newPrice: "$8.99",
-    img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop",
+    title: "Zinger + Fries + Pepsi",
+    desc: "1 Zinger sandwich + Fries 500g + Pepsi",
+    oldPrice: "1,000,000 LBP",
+    newPrice: "850,000 LBP",
+    img: "https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&cs=tinysrgb&w=400",
+    items: [
+      { name: "Zinger", qty: 1 },
+      { name: "Fries 500g", qty: 1 },
+      { name: "Pepsi", qty: 1 },
+    ],
   },
   {
-    badge: "👨‍👩‍👧 Family",
-    title: "Family Feast",
-    desc: "4 burgers + 2 large fries + 4 drinks",
-    oldPrice: "$44.99",
-    newPrice: "$29.99",
-    img: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&auto=format&fit=crop",
+    badge: "⭐ Combo",
+    title: "2 Fajita + Pepsi",
+    desc: "2 Fajita sandwiches + 1 Pepsi",
+    oldPrice: "900,000 LBP",
+    newPrice: "780,000 LBP",
+    img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400",
+    items: [
+      { name: "Fajita", qty: 2 },
+      { name: "Pepsi", qty: 1 },
+    ],
   },
   {
-    badge: "🌙 Late Night",
-    title: "Late Night Special",
-    desc: "Double stack + loaded fries after 10 pm",
-    oldPrice: "$14.99",
-    newPrice: "$9.99",
-    img: "https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=400&auto=format&fit=crop",
+    badge: "🥤 Refresh",
+    title: "Chicken Sub + Diet 7Up",
+    desc: "1 Chicken Sub + 1 Diet 7Up",
+    oldPrice: "500,000 LBP",
+    newPrice: "450,000 LBP",
+    img: "https://images.pexels.com/photos/3219483/pexels-photo-3219483.jpeg?auto=compress&cs=tinysrgb&w=400",
+    items: [
+      { name: "Chicken Sub", qty: 1 },
+      { name: "Diet 7Up", qty: 1 },
+    ],
   },
 ];
 
 export default function Offers() {
+  const { add } = useCart();
+
+  const addOfferToCart = (offer) => {
+    add({
+      name: `Offer: ${offer.title}`,
+      desc: offer.desc,
+      price: offer.newPrice,
+      img: offer.img,
+    });
+  };
+
   return (
     <section className="section section-dark" id="offers">
       <div className="container">
@@ -50,7 +76,9 @@ export default function Offers() {
                   <span className="old-price">{o.oldPrice}</span>
                   <span className="new-price">{o.newPrice}</span>
                 </div>
-                <a href="#contact" className="btn btn-primary">Grab Deal</a>
+                <button className="btn btn-primary" onClick={() => addOfferToCart(o)} type="button">
+                  Grab Offer
+                </button>
               </div>
             </div>
           ))}

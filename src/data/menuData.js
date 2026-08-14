@@ -362,4 +362,42 @@ export const menuData = {
       img: P(38366578),
     },
   ],
+  drinks: [
+    {
+      name: "Pepsi",
+      desc: "Chilled Pepsi soft drink",
+      price: "100,000 LBP",
+      img: "https://bklebanon.com/Content/pictures/pepsi2026.png",
+    },
+    {
+      name: "Diet Pepsi",
+      desc: "Chilled Diet Pepsi soft drink",
+      price: "100,000 LBP",
+      img: "https://bklebanon.com/Content/pictures/pepsidiet2026.png",
+    },
+    {
+      name: "7UP",
+      desc: "Refreshing lemon-lime 7UP",
+      price: "100,000 LBP",
+      img: "https://bklebanon.com/Content/pictures/7upnodiet2026.png",
+    },
+    {
+      name: "Diet 7Up",
+      desc: "Refreshing lemon-lime Diet 7Up",
+      price: "100,000 LBP",
+      img: "https://bklebanon.com/Content/pictures/7up2026.png",
+    },
+    {
+      name: "Mirinda",
+      desc: "Cold Mirinda orange soda",
+      price: "100,000 LBP",
+      img: "https://bklebanon.com/Content/pictures/mirinda2026.png",
+    },
+    {
+      name: "Water",
+      desc: "Bottled mineral water",
+      price: "40,000 LBP",
+      img: "https://bklebanon.com/Content/pictures/MINIRAL%20WATER.png",
+    },
+  ],
 };

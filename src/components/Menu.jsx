@@ -9,6 +9,7 @@ const TABS = [
   { key: "mashiweh", label: "Mashiweh" },
   { key: "crispy", label: "Crispy, Wings & Shrimps" },
   { key: "sides", label: "Sides" },
+  { key: "drinks", label: "Drinks" },
 ];
 
 export default function Menu() {

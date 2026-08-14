@@ -6,6 +6,7 @@ import Features from "./components/Features";
 import Contact  from "./components/Contact";
 import Footer   from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
+import CartToast from "./components/CartToast";
 import { CartProvider } from "./context/CartContext";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <Contact />
       <Footer />
       <CartDrawer />
+      <CartToast />
     </CartProvider>
   );
 }
