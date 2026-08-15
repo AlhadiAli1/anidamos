@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="hero-image">
           <div className="hero-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop"
+              src="/images/hero-burger.jpg"
               alt="Andiamos signature burger"
             />
           </div>

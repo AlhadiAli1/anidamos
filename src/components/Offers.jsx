@@ -8,7 +8,7 @@ const offers = [
     desc: "1 Zinger sandwich + Fries 500g + Pepsi",
     oldPrice: "1,000,000 LBP",
     newPrice: "850,000 LBP",
-    img: "https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "/images/pexels-1600711.jpg",
     items: [
       { name: "Zinger", qty: 1 },
       { name: "Fries 500g", qty: 1 },
@@ -21,7 +21,7 @@ const offers = [
     desc: "2 Fajita sandwiches + 1 Pepsi",
     oldPrice: "900,000 LBP",
     newPrice: "780,000 LBP",
-    img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "/images/pexels-1640777.jpg",
     items: [
       { name: "Fajita", qty: 2 },
       { name: "Pepsi", qty: 1 },
@@ -33,7 +33,7 @@ const offers = [
     desc: "1 Chicken Sub + 1 Diet 7Up",
     oldPrice: "500,000 LBP",
     newPrice: "450,000 LBP",
-    img: "https://images.pexels.com/photos/3219483/pexels-photo-3219483.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "/images/pexels-3219483.jpg",
     items: [
       { name: "Chicken Sub", qty: 1 },
       { name: "Diet 7Up", qty: 1 },
