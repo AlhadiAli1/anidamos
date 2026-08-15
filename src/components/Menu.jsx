@@ -8,7 +8,7 @@ const TABS = [
   { key: "pizza", label: "Pizza" },
   { key: "mashiweh", label: "Mashiweh" },
   { key: "crispy", label: "Crispy, Wings & Shrimps" },
-  { key: "sides", label: "Sides" },
+  { key: "sides", label: "Appetizers" },
   { key: "drinks", label: "Drinks" },
 ];
 
@@ -34,6 +34,7 @@ export default function Menu() {
         <div className="section-header">
           <span className="section-tag">Our Menu</span>
           <h2>What Are You Craving?</h2>
+          <p className="section-subtitle-ar">شو جاي <span className="ar-last-word">عبالك؟</span></p>
           <p>Something for everyone – from stacked burgers to wood-fired pizza.</p>
         </div>
 
