@@ -102,9 +102,13 @@ function AdminDashboard() {
     }));
   };
 
-  const persist = (nextConfig = config) => {
-    saveRestaurantConfig(nextConfig);
-    setNotice("Changes saved.");
+  const persist = async (nextConfig = config) => {
+    try {
+      await saveRestaurantConfig(nextConfig);
+      setNotice("Changes saved.");
+    } catch (error) {
+      setNotice(error.message);
+    }
   };
 
   const saveItem = (event) => {
@@ -167,9 +171,8 @@ function AdminDashboard() {
   const resetConfig = () => {
     if (!window.confirm("Restore the original menu and contact details?")) return;
     setConfig(defaultRestaurantConfig);
-    saveRestaurantConfig(defaultRestaurantConfig);
+    persist(defaultRestaurantConfig);
     setDraft(null);
-    setNotice("Original information restored.");
   };
 
   const updateDraft = (event) => {
