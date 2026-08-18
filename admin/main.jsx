@@ -32,6 +32,8 @@ const emptyItem = (category) => ({
   largePrice: "",
 });
 
+const emptyOffer = () => ({ badge: "", title: "", desc: "", oldPrice: "", newPrice: "", img: "", featured: false });
+
 function toFormItem(item, category) {
   return {
     name: item.name,
@@ -89,6 +91,7 @@ function AdminDashboard() {
   const [config, setConfig] = useState(getRestaurantConfig);
   const [activeCategory, setActiveCategory] = useState("burgers");
   const [draft, setDraft] = useState(null);
+  const [offerDraft, setOfferDraft] = useState(null);
   const [notice, setNotice] = useState("");
 
   const updateContact = (event) => {
@@ -135,6 +138,32 @@ function AdminDashboard() {
     persist(nextConfig);
   };
 
+  const updateOfferDraft = (event) => {
+    const { name, value, type, checked } = event.target;
+    setOfferDraft((current) => ({ ...current, [name]: type === "checkbox" ? checked : value }));
+  };
+
+  const saveOffer = (event) => {
+    event.preventDefault();
+    if (!offerDraft.title.trim() || !offerDraft.desc.trim() || !offerDraft.newPrice.trim()) return;
+    const { index, ...offer } = offerDraft;
+    const nextConfig = {
+      ...config,
+      offers: index === undefined
+        ? [...config.offers, offer]
+        : config.offers.map((currentOffer, offerIndex) => offerIndex === index ? offer : currentOffer),
+    };
+    setConfig(nextConfig);
+    persist(nextConfig);
+    setOfferDraft(null);
+  };
+
+  const deleteOffer = (index) => {
+    const nextConfig = { ...config, offers: config.offers.filter((_, offerIndex) => offerIndex !== index) };
+    setConfig(nextConfig);
+    persist(nextConfig);
+  };
+
   const resetConfig = () => {
     if (!window.confirm("Restore the original menu and contact details?")) return;
     setConfig(defaultRestaurantConfig);
@@ -170,6 +199,17 @@ function AdminDashboard() {
           <label>Location<input name="location" value={config.contact.location} onChange={updateContact} /></label>
           <label>Opening hours<input name="hours" value={config.contact.hours} onChange={updateContact} /></label>
         </div>
+      </section>
+
+      <section className="panel offers-panel">
+        <div className="panel-heading"><div><p className="eyebrow">Specials</p><h2>Offers</h2></div><button className="primary-button" onClick={() => setOfferDraft(emptyOffer())}>Add offer</button></div>
+        {offerDraft && <form className="item-form" onSubmit={saveOffer}>
+          <div className="form-grid"><label>Offer title<input name="title" value={offerDraft.title} onChange={updateOfferDraft} required /></label><label>Badge<input name="badge" value={offerDraft.badge} onChange={updateOfferDraft} placeholder="Best Seller" /></label><label>Image URL<input name="img" value={offerDraft.img} onChange={updateOfferDraft} placeholder="/images/offer.jpg" /></label></div>
+          <label>Description<textarea name="desc" value={offerDraft.desc} onChange={updateOfferDraft} rows="3" required /></label>
+          <div className="form-grid"><label>Original price<input name="oldPrice" value={offerDraft.oldPrice} onChange={updateOfferDraft} /></label><label>Offer price<input name="newPrice" value={offerDraft.newPrice} onChange={updateOfferDraft} required /></label><label className="checkbox-label"><input type="checkbox" name="featured" checked={offerDraft.featured} onChange={updateOfferDraft} /> Featured offer</label></div>
+          <div className="form-actions"><button type="button" className="secondary-button" onClick={() => setOfferDraft(null)}>Cancel</button><button className="primary-button" type="submit">Save offer</button></div>
+        </form>}
+        <div className="item-list">{config.offers.map((offer, index) => <article className="item-row" key={`${offer.title}-${index}`}><img src={offer.img} alt="" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} /><div><h3>{offer.title}</h3><p>{offer.desc}</p><strong>{offer.newPrice}{offer.featured ? " | Featured" : ""}</strong></div><div className="row-actions"><button className="icon-button" aria-label={`Edit ${offer.title}`} title="Edit offer" onClick={() => setOfferDraft({ ...offer, index })}>Edit</button><button className="icon-button danger" aria-label={`Delete ${offer.title}`} title="Delete offer" onClick={() => deleteOffer(index)}>Delete</button></div></article>)}</div>
       </section>
 
       <section className="management-layout">

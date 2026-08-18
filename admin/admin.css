@@ -14,7 +14,7 @@ h1, h2, h3, p { margin-top: 0; } h1 { font-size: 2.4rem; margin-bottom: 0; } h2 
 .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 label { display: grid; gap: 7px; font: 700 .85rem Arial, sans-serif; color: #33453e; }
 input, textarea { width: 100%; background: #fff; border: 1px solid #bfc6ba; padding: 10px; color: #1d2d29; font: 1rem Arial, sans-serif; }
-textarea { resize: vertical; } .contact-panel { margin-bottom: 24px; }
+textarea { resize: vertical; } .contact-panel, .offers-panel { margin-bottom: 24px; }
 .primary-button, .secondary-button, .icon-button, .category { border: 1px solid transparent; padding: 10px 14px; font: 700 .82rem Arial, sans-serif; }
 .primary-button { background: #153f35; color: #fff; } .secondary-button { background: #fffdf7; color: #153f35; border-color: #153f35; }
 .header-actions { gap: 10px; }

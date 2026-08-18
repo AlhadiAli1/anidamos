@@ -1,48 +1,9 @@
 import { useCart } from "../context/CartContext";
-
-const offers = [
-  {
-    badge: "🔥 Best Seller",
-    featured: true,
-    title: "Zinger + Fries + Pepsi",
-    desc: "1 Zinger sandwich + Fries 500g + Pepsi",
-    oldPrice: "1,000,000 LBP",
-    newPrice: "850,000 LBP",
-    img: "/images/pexels-1600711.jpg",
-    items: [
-      { name: "Zinger", qty: 1 },
-      { name: "Fries 500g", qty: 1 },
-      { name: "Pepsi", qty: 1 },
-    ],
-  },
-  {
-    badge: "⭐ Combo",
-    title: "2 Fajita + Pepsi",
-    desc: "2 Fajita sandwiches + 1 Pepsi",
-    oldPrice: "900,000 LBP",
-    newPrice: "780,000 LBP",
-    img: "/images/pexels-1640777.jpg",
-    items: [
-      { name: "Fajita", qty: 2 },
-      { name: "Pepsi", qty: 1 },
-    ],
-  },
-  {
-    badge: "🥤 Refresh",
-    title: "Chicken Sub + Diet 7Up",
-    desc: "1 Chicken Sub + 1 Diet 7Up",
-    oldPrice: "500,000 LBP",
-    newPrice: "450,000 LBP",
-    img: "/images/pexels-3219483.jpg",
-    items: [
-      { name: "Chicken Sub", qty: 1 },
-      { name: "Diet 7Up", qty: 1 },
-    ],
-  },
-];
+import { getRestaurantConfig } from "../data/restaurantConfig";
 
 export default function Offers() {
   const { add } = useCart();
+  const { offers } = getRestaurantConfig();
 
   const addOfferToCart = (offer) => {
     add({
