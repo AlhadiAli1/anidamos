@@ -1,4 +1,7 @@
+import { getRestaurantConfig } from "../data/restaurantConfig";
+
 export default function Contact() {
+  const { contact } = getRestaurantConfig();
   return (
     <section className="section section-contact" id="contact">
       <div className="container">
@@ -10,17 +13,17 @@ export default function Contact() {
         <div className="contact-info-centered">
           <div className="info-item">
             <span className="info-icon">📍</span>
-            <div><strong>Location</strong><p>برعشيت/حديقة الياسمين</p></div>
+            <div><strong>Location</strong><p>{contact.location}</p></div>
           </div>
           <div className="info-item">
             <span className="info-icon">📞</span>
-            <div><strong>Phone</strong><p>+961 71 919 234</p></div>
+            <div><strong>Phone</strong><p>{contact.phone}</p></div>
           </div>
           <div className="info-item">
             <span className="info-icon">⏰</span>
             <div>
               <strong>Hours</strong>
-              <p>Every day: 12pm – 2am</p>
+              <p>{contact.hours}</p>
             </div>
           </div>
           <a href="#menu" className="btn btn-primary contact-cart-btn">🛒 Check Cart &amp; Order</a>

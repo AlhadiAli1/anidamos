@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { menuData } from "../data/menuData";
+import { getRestaurantConfig } from "../data/restaurantConfig";
 import { useCart } from "../context/CartContext";
 
 const TABS = [
@@ -16,6 +16,7 @@ export default function Menu() {
   const [active, setActive] = useState("burgers");
   const [selectedSizes, setSelectedSizes] = useState({});
   const { add } = useCart();
+  const menuData = getRestaurantConfig().menu;
 
   const getSizeFor = (name) => selectedSizes[name] || "M";
 

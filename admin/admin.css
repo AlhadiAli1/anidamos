@@ -1,0 +1,27 @@
+:root { font-family: Georgia, "Times New Roman", serif; color: #1d2d29; background: #f4f0e6; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.admin-shell { max-width: 1320px; margin: 0 auto; padding: 36px 24px 72px; }
+.admin-header, .panel-heading, .form-actions, .item-row, .row-actions, .header-actions { display: flex; align-items: center; }
+.admin-header, .panel-heading { justify-content: space-between; gap: 20px; }
+.admin-header { border-bottom: 3px solid #d77b32; padding-bottom: 24px; margin-bottom: 20px; }
+h1, h2, h3, p { margin-top: 0; } h1 { font-size: 2.4rem; margin-bottom: 0; } h2 { font-size: 1.4rem; margin-bottom: 0; } h3 { font-size: 1.05rem; margin-bottom: 5px; }
+.eyebrow { color: #a54b1b; text-transform: uppercase; letter-spacing: .08em; font: 700 .72rem/1.2 Arial, sans-serif; margin-bottom: 6px; }
+.panel { background: #fffdf7; border: 1px solid #d9d1bf; box-shadow: 0 4px 0 rgba(29, 45, 41, .08); padding: 24px; }
+.notice { background: #dceede; color: #1d563a; padding: 12px 16px; margin: 0 0 20px; font: 700 .9rem Arial, sans-serif; }
+.form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+label { display: grid; gap: 7px; font: 700 .85rem Arial, sans-serif; color: #33453e; }
+input, textarea { width: 100%; background: #fff; border: 1px solid #bfc6ba; padding: 10px; color: #1d2d29; font: 1rem Arial, sans-serif; }
+textarea { resize: vertical; } .contact-panel { margin-bottom: 24px; }
+.primary-button, .secondary-button, .icon-button, .category { border: 1px solid transparent; padding: 10px 14px; font: 700 .82rem Arial, sans-serif; }
+.primary-button { background: #153f35; color: #fff; } .secondary-button { background: #fffdf7; color: #153f35; border-color: #153f35; }
+.header-actions { gap: 10px; }
+.login-shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: linear-gradient(135deg, #153f35 0%, #315b46 55%, #d77b32 160%); }
+.login-panel { width: min(100%, 430px); display: grid; gap: 17px; padding: 38px; background: #fffdf7; border-top: 5px solid #d77b32; box-shadow: 8px 8px 0 rgba(0, 0, 0, .16); }.login-panel h1 { font-size: 2.1rem; }.login-copy { color: #66736d; font: 1rem/1.5 Arial, sans-serif; margin-bottom: 5px; }.login-error { color: #a53325; font: 700 .85rem Arial, sans-serif; margin: 0; }
+.management-layout { display: grid; grid-template-columns: 245px 1fr; gap: 24px; align-items: start; }
+.categories h2 { margin-bottom: 16px; }.category { display: flex; width: 100%; justify-content: space-between; text-align: left; background: transparent; color: #263933; border-bottom-color: #ded8ca; }.category.active { background: #153f35; color: white; }.category span { font-size: .75rem; }
+.items-panel { min-width: 0; }.item-form { margin: 22px 0; padding: 20px; border: 1px solid #d77b32; background: #fff6e9; display: grid; gap: 16px; }.checkbox-label { display: flex; align-items: center; gap: 9px; }.checkbox-label input { width: auto; }.form-actions { justify-content: flex-end; gap: 10px; }
+.item-list { border-top: 1px solid #ded8ca; }.item-row { gap: 16px; padding: 16px 0; border-bottom: 1px solid #ded8ca; }.item-row img { width: 72px; height: 58px; object-fit: cover; background: #e7e0d0; }.item-row > div:nth-child(2) { flex: 1; }.item-row p { color: #66736d; font: .87rem Arial, sans-serif; margin-bottom: 8px; }.item-row strong { color: #a54b1b; font: 700 .85rem Arial, sans-serif; }.row-actions { gap: 8px; }.icon-button { background: #fff; border-color: #bfc6ba; color: #153f35; }.icon-button.danger { color: #a53325; border-color: #dcb3ad; }
+@media (max-width: 760px) { .admin-shell { padding: 24px 14px 48px; }.admin-header, .panel-heading { align-items: flex-start; flex-direction: column; }.form-grid, .management-layout { grid-template-columns: 1fr; }.management-layout { gap: 18px; }.categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 8px; }.categories > p, .categories > h2 { grid-column: 1 / -1; }.panel { padding: 18px; }.item-row { align-items: flex-start; flex-wrap: wrap; }.row-actions { margin-left: 88px; }.header-actions { width: 100%; }.header-actions button { flex: 1; }.login-panel { padding: 28px 22px; } }
