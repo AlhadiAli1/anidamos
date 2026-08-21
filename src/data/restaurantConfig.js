@@ -311,70 +311,36 @@ export const defaultRestaurantConfig = {
   ],
   "crispy": [
     {
-      "name": "Crispy (3 pcs)",
-      "desc": "3 pieces of golden crispy fried chicken",
-      "price": "500,000 LBP",
+      "name": "Crispy",
+      "desc": "Golden crispy fried chicken",
+      "sizes": {
+        "3 pcs": "500,000 LBP",
+        "5 pcs": "800,000 LBP",
+        "8 pcs": "1,000,000 LBP",
+        "20 pcs": "3,000,000 LBP"
+      },
       "img": "/images/bing-krispy.jpg"
     },
     {
-      "name": "Crispy (5 pcs)",
-      "desc": "5 pieces of golden crispy fried chicken",
-      "price": "800,000 LBP",
-      "img": "/images/bing-krispy.jpg"
+      "name": "Wings",
+      "desc": "Crispy fried chicken wings",
+      "sizes": {
+        "6 pcs": "450,000 LBP",
+        "12 pcs": "800,000 LBP",
+        "24 pcs": "1,400,000 LBP"
+      },
+      "img": "/images/wings.png"
     },
     {
-      "name": "Crispy (8 pcs)",
-      "desc": "8 pieces of golden crispy fried chicken",
-      "price": "1,000,000 LBP",
-      "img": "/images/bing-krispy.jpg"
-    },
-    {
-      "name": "Crispy (20 pcs)",
-      "desc": "20 pieces of golden crispy fried chicken — great for sharing",
-      "price": "3,000,000 LBP",
-      "img": "/images/bing-krispy.jpg"
-    },
-    {
-      "name": "Wings (6 pcs)",
-      "desc": "6 crispy fried chicken wings",
-      "price": "450,000 LBP",
-      "img": "/images/bing-wings.jpg"
-    },
-    {
-      "name": "Wings (12 pcs)",
-      "desc": "12 crispy fried chicken wings",
-      "price": "800,000 LBP",
-      "img": "/images/bing-wings.jpg"
-    },
-    {
-      "name": "Wings (24 pcs)",
-      "desc": "24 crispy fried chicken wings — perfect for a crowd",
-      "price": "1,400,000 LBP",
-      "img": "/images/bing-wings.jpg"
-    },
-    {
-      "name": "Shrimps (10 pcs)",
-      "desc": "10 juicy shrimps served with fries & sauce",
-      "price": "900,000 LBP",
-      "img": "/images/bing-shrimps.jpg"
-    },
-    {
-      "name": "Shrimps (20 pcs)",
-      "desc": "20 juicy shrimps served with fries & sauce",
-      "price": "1,600,000 LBP",
-      "img": "/images/bing-shrimps.jpg"
-    },
-    {
-      "name": "Shrimps (30 pcs)",
-      "desc": "30 juicy shrimps served with fries & sauce",
-      "price": "2,300,000 LBP",
-      "img": "/images/bing-shrimps.jpg"
-    },
-    {
-      "name": "Shrimps (50 pcs)",
-      "desc": "50 juicy shrimps served with fries & sauce",
-      "price": "3,500,000 LBP",
-      "img": "/images/bing-shrimps.jpg"
+      "name": "Shrimps",
+      "desc": "Juicy shrimps served with fries & sauce",
+      "sizes": {
+        "10 pcs": "900,000 LBP",
+        "20 pcs": "1,600,000 LBP",
+        "30 pcs": "2,300,000 LBP",
+        "50 pcs": "3,500,000 LBP"
+      },
+      "img": "/images/shrimps.png"
     }
   ],
   "sides": [

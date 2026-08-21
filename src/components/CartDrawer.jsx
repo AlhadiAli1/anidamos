@@ -38,20 +38,18 @@ export default function CartDrawer() {
   const sendOrder = () => {
     const msg = encodeURIComponent(buildMessage(items, orderType));
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
-    clear();
-    setOpen(false);
   };
 
   return (
     <>
       {/* Floating cart button */}
       <button
-        className="cart-fab"
+        className={`cart-fab${count > 0 ? " has-items" : ""}`}
         onClick={() => setOpen(true)}
         aria-label="Open cart"
       >
         🛒
-        {count > 0 && <span className="cart-badge">{count}</span>}
+        {count > 0 && <span className="cart-badge" key={count}>{count}</span>}
       </button>
 
       {/* Overlay */}
@@ -88,16 +86,16 @@ export default function CartDrawer() {
           ) : (
             <ul className="cart-list">
               {items.map((item) => (
-                <li key={item.name} className="cart-item">
+                <li key={item.cartKey || item.name} className="cart-item">
                   <img src={item.img} alt={item.name} className="cart-item-img" />
                   <div className="cart-item-info">
                     <p className="cart-item-name">{item.name}{item.size ? ` (${item.size})` : ''}</p>
                     <p className="cart-item-price">{item.price}</p>
                   </div>
                   <div className="cart-qty">
-                    <button onClick={() => adjust(item.name, -1)} aria-label="Decrease">−</button>
+                    <button onClick={() => adjust(item.cartKey || item.name, -1)} aria-label="Decrease">−</button>
                     <span>{item.qty}</span>
-                    <button onClick={() => adjust(item.name, +1)} aria-label="Increase">+</button>
+                    <button onClick={() => adjust(item.cartKey || item.name, +1)} aria-label="Increase">+</button>
                   </div>
                 </li>
               ))}
