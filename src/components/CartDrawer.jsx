@@ -33,7 +33,7 @@ function buildMessage(items, orderType) {
 export default function CartDrawer() {
   const { items, adjust, clear, count } = useCart();
   const [open, setOpen] = useState(false);
-  const [orderType, setOrderType] = useState("delivery");
+  const [orderType, setOrderType] = useState("dinein");
 
   const sendOrder = () => {
     const msg = encodeURIComponent(buildMessage(items, orderType));

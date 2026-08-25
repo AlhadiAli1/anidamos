@@ -479,6 +479,7 @@ ul  { list-style: none; }
   justify-content: space-between;
   padding: 20px 24px 16px;
   border-bottom: 1px solid rgba(42,17,21,.08);
+  flex-shrink: 0;
 }
 .cart-drawer-header h3 { font-size: 1.2rem; font-weight: 800; }
 
@@ -491,6 +492,7 @@ ul  { list-style: none; }
   overflow: hidden;
   background: rgba(255,255,255,.74);
   box-shadow: 0 12px 28px rgba(42,17,21,.06);
+  flex-shrink: 0;
 }
 .order-type-btn {
   flex: 1;
@@ -553,6 +555,7 @@ ul  { list-style: none; }
 }
 
 .cart-drawer-body {
+  min-height: 0;
   overflow-y: auto;
   flex: 1;
   padding: 12px 24px;
@@ -623,6 +626,7 @@ ul  { list-style: none; }
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .delivery-notice {
