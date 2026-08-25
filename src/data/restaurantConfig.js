@@ -36,7 +36,8 @@ export const defaultRestaurantConfig = {
   "location": "برعشيت/حديقة الياسمين",
   "hours": "Every day: 12pm - 2am"
 },
-  menu: {
+  menu: menuData,
+  legacyMenu: {
   "burgers": [
     {
       "name": "Andiamo's Burger",

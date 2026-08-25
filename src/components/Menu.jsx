@@ -10,12 +10,49 @@ const imageFocusClass = {
   "Sandwich Tawook": " image-focus-tawook",
 };
 
+const getIngredients = (description) => description
+  .replace(/\.$/, "")
+  .replace(/,?\s+and\s+/gi, ", ")
+  .split(",")
+  .map((ingredient) => ingredient.trim())
+  .filter(Boolean);
+
+const ingredientIcons = [
+  [/onion rings/, "onion-rings.png"], [/mozzarella sticks/, "mozzarella-sticks.png"],
+  [/jalapeno poppers/, "jalapeno-poppers.png"], [/chicken wings|wings/, "chicken-wings.png"],
+  [/curly fries/, "curly-fries.png"], [/grilled tomato/, "grilled-tomato.png"],
+  [/fried chicken strips/, "fried-chicken-strips.png"], [/fried chicken fillet|fried chicken|crispy/, "fried-chicken-fillet.png"],
+  [/marinated chicken/, "marinated-chicken.png"], [/grilled chicken/, "grilled-chicken.png"],
+  [/sliced fillet|fillet/, "sliced-fillet-steak.png"], [/double patty/, "double-patty.png"],
+  [/beef|patty/, "beef-patty.png"], [/grilled shrimp/, "grilled-shrimp.png"],
+  [/fried shrimp|shrimp/, "fried-shrimp.png"], [/kafta/, "kafta.png"], [/lahmeh/, "lahmeh-meshwi.png"],
+  [/tawook/, "tawook.png"], [/squared mozzarella/, "squared-mozzarella-patty.png"],
+  [/grilled mozzarella/, "grilled-mozzarella.png"], [/mozzarella/, "mozzarella-cheese.png"],
+  [/cheddar/, "cheddar-cheese.png"], [/emmental/, "emmental-cheese.png"], [/smoked turkey/, "smoked-turkey.png"],
+  [/smoked cheese/, "smoke-cheese.png"], [/lettuce/, "lettuce.png"], [/tomato/, "tomato.png"],
+  [/grilled onion/, "grilled-onions.png"], [/onion|biwaz/, "onion.png"], [/pickles?/, "pickles.png"],
+  [/jalape[nñ]o/, "jalapeno.png"], [/green peppers|peppers/, "grilled-green-peppers.png"],
+  [/carrots?/, "grilled-carrots.png"], [/mushroom/, "mushroom.png"], [/corn/, "sweet-corn.png"],
+  [/mayonnaise/, "mayonnaise.png"], [/garlic/, "garlic-sauce.png"], [/alfredo/, "alfredo-sauce.png"],
+  [/bbq/, "bbq-sauce.png"], [/butter spicy/, "butter-spicy-sauce.png"], [/spicy sauce/, "spicy-sauce.png"],
+  [/andiamos? sauce/, "andiamos-sauce.png"], [/pesto/, "andiamos-pesto-sauce.png"], [/cocktail/, "cocktail-sauce.png"],
+  [/ketchup/, "ketchup.png"], [/mustard/, "mustard.png"], [/fries/, "fries.png"], [/wedges/, "wedges.png"],
+  [/cole slaw/, "cole-slaw.png"], [/hummus/, "hummus.png"], [/grilled egg/, "grilled-egg.png"],
+  [/bread/, "bread.png"], [/buns?/, "buns.png"], [/rocca|rocket/, "rocca.png"],
+];
+
+const getIngredientIcon = (ingredient) => {
+  const value = ingredient.toLowerCase();
+  return ingredientIcons.find(([pattern]) => pattern.test(value))?.[1];
+};
+
 export const TABS = [
   { key: "burgers", label: "Burgers" },
   { key: "sandwiches", label: "Sandwiches" },
   { key: "pizza", label: "Pizza" },
   { key: "mashiweh", label: "Mashiweh" },
   { key: "crispy", label: "Crispy, Wings & Shrimps" },
+  { key: "family", label: "Family Combos" },
   { key: "sides", label: "Appetizers" },
   { key: "drinks", label: "Drinks" },
 ];
@@ -29,6 +66,8 @@ export default function Menu() {
   const menuData = getRestaurantConfig().menu;
   const menuRef = useRef(null);
   const addedTimerRef = useRef(null);
+  const gestureStartRef = useRef(null);
+  const wheelTimerRef = useRef(null);
 
   useScrollReveal(menuRef, [active]);
 
@@ -48,6 +87,45 @@ export default function Menu() {
   }, []);
 
   const getSizeFor = (item) => selectedSizes[item.name] || Object.keys(item.sizes || {})[0];
+
+  const selectAdjacentCategory = (direction) => {
+    setActive((current) => {
+      const currentIndex = TABS.findIndex(({ key }) => key === current);
+      const nextIndex = Math.max(0, Math.min(TABS.length - 1, currentIndex + direction));
+      return TABS[nextIndex].key;
+    });
+  };
+
+  const handlePointerDown = (event) => {
+    if (event.pointerType !== "mouse") {
+      gestureStartRef.current = { x: event.clientX, y: event.clientY };
+    }
+  };
+
+  const handlePointerUp = (event) => {
+    const gestureStart = gestureStartRef.current;
+    gestureStartRef.current = null;
+
+    if (!gestureStart) return;
+
+    const deltaX = event.clientX - gestureStart.x;
+    const deltaY = event.clientY - gestureStart.y;
+
+    if (Math.abs(deltaX) >= 56 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+      selectAdjacentCategory(deltaX < 0 ? 1 : -1);
+    }
+  };
+
+  const handleWheel = (event) => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) || Math.abs(event.deltaX) < 24 || wheelTimerRef.current) {
+      return;
+    }
+
+    selectAdjacentCategory(event.deltaX > 0 ? 1 : -1);
+    wheelTimerRef.current = window.setTimeout(() => {
+      wheelTimerRef.current = null;
+    }, 360);
+  };
 
   const handleAdd = (item) => {
     const key = item.sizes ? `${item.name}|${getSizeFor(item)}` : item.name;
@@ -91,7 +169,13 @@ export default function Menu() {
           ))}
         </div>
 
-        <div className="menu-grid">
+        <div
+          className="menu-grid"
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={() => { gestureStartRef.current = null; }}
+          onWheel={handleWheel}
+        >
           {menuData[active].map((item, index) => {
             const itemKey = item.sizes ? `${item.name}|${getSizeFor(item)}` : item.name;
 
@@ -111,7 +195,20 @@ export default function Menu() {
               </button>
               <div className="menu-card-body">
                 <h3>{item.name}</h3>
-                <p>{item.desc}</p>
+                <div className="ingredient-details" aria-label={`Ingredients: ${item.desc}`}>
+                  <ul className="ingredient-list">
+                    {getIngredients(item.desc).map((ingredient) => {
+                      const icon = getIngredientIcon(ingredient);
+
+                      return (
+                      <li className="ingredient-item" key={ingredient}>
+                        {icon ? <img className="ingredient-icon" src={`/icons/${icon}`} alt="" aria-hidden="true" /> : null}
+                        {ingredient}
+                      </li>
+                      );
+                    })}
+                  </ul>
+                </div>
                 {item.sizes && (
                   <div className="size-selector">
                     {Object.keys(item.sizes).map((s) => (

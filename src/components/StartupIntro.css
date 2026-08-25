@@ -1,0 +1,77 @@
+.startup-intro {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #080605;
+  color: #fff7e5;
+  animation: startupExit .5s ease 3.7s both;
+}
+
+.startup-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 52%, rgba(135, 45, 18, .42), transparent 31%), linear-gradient(180deg, rgba(8, 6, 5, .12), #080605 92%);
+  z-index: -1;
+}
+
+.startup-intro-stage { position: relative; width: min(88vw, 690px); height: 100%; margin: 0 auto; display: grid; place-items: center; perspective: 900px; }
+.startup-intro-light { position: absolute; top: -30vh; left: 50%; width: 38vw; min-width: 360px; height: 125vh; background: linear-gradient(90deg, transparent, rgba(255, 176, 88, .18), transparent); filter: blur(24px); transform: translateX(-50%) rotate(17deg); animation: startupLight 4.2s cubic-bezier(.16, 1, .3, 1) both; }
+.startup-intro-smoke { position: absolute; width: 70vw; height: 30vh; border-radius: 50%; background: rgba(255, 222, 190, .09); filter: blur(52px); opacity: 0; }
+.startup-intro-smoke-one { left: -28vw; bottom: 10vh; animation: startupSmokeOne 4.2s ease-in-out both; }
+.startup-intro-smoke-two { right: -31vw; top: 15vh; animation: startupSmokeTwo 4.2s ease-in-out both; }
+.startup-intro-particles { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255, 232, 194, .75) 0 1px, transparent 1.6px); background-size: 89px 113px; opacity: 0; animation: startupParticles 4.2s ease both; }
+
+.startup-intro-label { position: absolute; top: 12vh; text-transform: uppercase; letter-spacing: .24em; font-size: clamp(.58rem, 1.8vw, .78rem); font-weight: 700; color: rgba(255, 226, 186, .72); opacity: 0; animation: startupLabel 4.2s ease both; }
+.startup-sandwich { position: relative; z-index: 1; width: min(72vw, 510px); height: min(38vw, 270px); min-height: 175px; opacity: 0; transform: translate3d(0, 50px, 0) scale(.85) rotateX(8deg); animation: startupSandwich 4.2s cubic-bezier(.16, 1, .3, 1) both; }
+.sandwich-layer { position: absolute; left: 5%; width: 90%; border-radius: 4px; box-shadow: inset 0 2px 0 rgba(255, 255, 255, .2), 0 6px 10px rgba(0, 0, 0, .3); }
+.sandwich-bun-top { top: 5%; height: 24%; background: linear-gradient(180deg, #f5c070, #b8642d 96%); border-radius: 5px 5px 2px 2px; }
+.sandwich-tomato { top: 29%; height: 6%; background: #ce3926; transform: skewX(-5deg); }
+.sandwich-cheddar { top: 35%; height: 12%; background: #f5ad25; clip-path: polygon(0 0, 100% 0, 92% 90%, 8% 100%); }
+.sandwich-zinger { top: 45%; height: 22%; background: repeating-linear-gradient(173deg, #8c3d17 0 6px, #c46920 7px 13px, #783114 14px 19px); border: 3px solid #a94e1c; }
+.sandwich-mozzarella { top: 66%; height: 12%; background: linear-gradient(180deg, #fff7d6, #e6d6a4); border: 2px solid #f7eaba; }
+.sandwich-lettuce { top: 77%; height: 8%; background: #67a934; clip-path: polygon(0 32%, 8% 0, 18% 58%, 28% 8%, 39% 65%, 51% 0, 61% 62%, 73% 11%, 84% 54%, 94% 0, 100% 35%, 100% 100%, 0 100%); }
+.sandwich-bun-bottom { top: 84%; height: 13%; background: linear-gradient(180deg, #c77335, #9e4f25); border-radius: 2px 2px 5px 5px; }
+.startup-sandwich-shadow { position: absolute; z-index: 0; width: min(72vw, 510px); height: 7vh; margin-top: min(39vw, 280px); border-radius: 50%; background: radial-gradient(ellipse, rgba(0, 0, 0, .78), transparent 68%); filter: blur(10px); opacity: 0; animation: startupShadow 4.2s ease both; }
+
+.startup-ingredients { position: absolute; inset: 0; pointer-events: none; }
+.startup-ingredient { position: absolute; text-transform: uppercase; color: #ffdca4; font-size: clamp(.54rem, 1.8vw, .75rem); font-weight: 700; letter-spacing: .13em; opacity: 0; animation: startupIngredient 4.2s ease both; }
+.ingredient-1 { top: 33%; left: -1%; animation-delay: .15s; }
+.ingredient-2 { top: 46%; right: -2%; animation-delay: .25s; }
+.ingredient-3 { top: 66%; left: 3%; animation-delay: .35s; }
+.ingredient-4 { top: 73%; right: 5%; animation-delay: .45s; }
+.ingredient-5 { top: 56%; left: -5%; animation-delay: .55s; }
+.startup-intro-title { position: absolute; bottom: 11vh; width: 100%; text-align: center; text-transform: uppercase; line-height: .84; opacity: 0; animation: startupTitle 4.2s cubic-bezier(.16, 1, .3, 1) both; }
+.startup-intro-title span, .startup-intro-title strong { display: block; }
+.startup-intro-title span { font-size: clamp(1.1rem, 4vw, 2.1rem); letter-spacing: .23em; font-weight: 700; color: #f7c475; }
+.startup-intro-title strong { margin-top: .2em; font-size: clamp(2.2rem, 10vw, 5.3rem); letter-spacing: .08em; font-weight: 900; text-shadow: 0 0 24px rgba(246, 154, 52, .32); }
+
+@keyframes startupSandwich { 0%, 11% { opacity: 0; transform: translate3d(0, 50px, 0) scale(.85) rotateX(8deg); } 31%, 86% { opacity: 1; transform: translate3d(-5px, -4px, 0) scale(1.02) rotateX(0); } 100% { opacity: 1; transform: translate3d(6px, -12px, 0) scale(1.1) rotateX(-2deg); } }
+@keyframes startupShadow { 0%, 14% { opacity: 0; transform: scale(.6); } 33%, 100% { opacity: 1; transform: scale(1); } }
+@keyframes startupIngredient { 0%, 33% { opacity: 0; transform: translateY(14px); } 45%, 67% { opacity: .9; transform: translateY(0); } 80%, 100% { opacity: 0; transform: translateY(-8px); } }
+@keyframes startupTitle { 0%, 54% { opacity: 0; transform: translateY(18px); } 70%, 100% { opacity: 1; transform: translateY(0); } }
+@keyframes startupLabel { 0%, 18% { opacity: 0; } 32%, 70% { opacity: 1; } 88%, 100% { opacity: 0; } }
+@keyframes startupLight { 0% { opacity: 0; transform: translateX(-80%) rotate(17deg); } 28%, 70% { opacity: 1; } 100% { opacity: 0; transform: translateX(50%) rotate(17deg); } }
+@keyframes startupSmokeOne { 0%, 20% { opacity: 0; transform: translate3d(-8vw, 4vh, 0) scale(.8); } 45%, 85% { opacity: .7; } 100% { opacity: 0; transform: translate3d(15vw, -10vh, 0) scale(1.2); } }
+@keyframes startupSmokeTwo { 0%, 28% { opacity: 0; transform: translate3d(8vw, -3vh, 0) scale(.8); } 52%, 85% { opacity: .45; } 100% { opacity: 0; transform: translate3d(-14vw, 10vh, 0) scale(1.2); } }
+@keyframes startupParticles { 0%, 22% { opacity: 0; } 45%, 84% { opacity: .28; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-20px); } }
+@keyframes startupExit { to { opacity: 0; visibility: hidden; } }
+
+@media (max-width: 520px) {
+  .startup-intro-stage { width: 100vw; }
+  .startup-sandwich { width: 82vw; height: 44vw; }
+  .startup-sandwich-shadow { width: 82vw; margin-top: 48vw; }
+  .ingredient-1 { left: 5%; }
+  .ingredient-2 { right: 5%; }
+  .ingredient-3 { left: 8%; }
+  .ingredient-4 { right: 7%; }
+  .ingredient-5 { left: 2%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .startup-intro, .startup-intro *, .startup-intro::before { animation-duration: .01ms; animation-iteration-count: 1; }
+}

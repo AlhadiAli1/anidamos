@@ -1,0 +1,242 @@
+[
+  {
+    "label": "Grilled Chicken",
+    "file": "grilled-chicken.png"
+  },
+  {
+    "label": "Fried Chicken Strips",
+    "file": "fried-chicken-strips.png"
+  },
+  {
+    "label": "Marinated Chicken",
+    "file": "marinated-chicken.png"
+  },
+  {
+    "label": "Sliced Fillet Steak",
+    "file": "sliced-fillet-steak.png"
+  },
+  {
+    "label": "Beef Patty",
+    "file": "beef-patty.png"
+  },
+  {
+    "label": "Double Patty",
+    "file": "double-patty.png"
+  },
+  {
+    "label": "Fried Chicken Fillet",
+    "file": "fried-chicken-fillet.png"
+  },
+  {
+    "label": "Grilled Shrimp",
+    "file": "grilled-shrimp.png"
+  },
+  {
+    "label": "Fried Shrimp",
+    "file": "fried-shrimp.png"
+  },
+  {
+    "label": "Kafta",
+    "file": "kafta.png"
+  },
+  {
+    "label": "Lahmeh Meshwi",
+    "file": "lahmeh-meshwi.png"
+  },
+  {
+    "label": "Tawook",
+    "file": "tawook.png"
+  },
+  {
+    "label": "Mozzarella Cheese",
+    "file": "mozzarella-cheese.png"
+  },
+  {
+    "label": "Grilled Mozzarella",
+    "file": "grilled-mozzarella.png"
+  },
+  {
+    "label": "Cheddar Cheese",
+    "file": "cheddar-cheese.png"
+  },
+  {
+    "label": "Emmental Cheese",
+    "file": "emmental-cheese.png"
+  },
+  {
+    "label": "Smoke Cheese",
+    "file": "smoke-cheese.png"
+  },
+  {
+    "label": "Smoked Turkey",
+    "file": "smoked-turkey.png"
+  },
+  {
+    "label": "Squared Mozzarella Patty",
+    "file": "squared-mozzarella-patty.png"
+  },
+  {
+    "label": "Lettuce",
+    "file": "lettuce.png"
+  },
+  {
+    "label": "Tomato",
+    "file": "tomato.png"
+  },
+  {
+    "label": "Onion",
+    "file": "onion.png"
+  },
+  {
+    "label": "Grilled Onions",
+    "file": "grilled-onions.png"
+  },
+  {
+    "label": "Pickles",
+    "file": "pickles.png"
+  },
+  {
+    "label": "Jalapeno",
+    "file": "jalapeno.png"
+  },
+  {
+    "label": "Grilled Green Peppers",
+    "file": "grilled-green-peppers.png"
+  },
+  {
+    "label": "Grilled Carrots",
+    "file": "grilled-carrots.png"
+  },
+  {
+    "label": "Grilled Corn",
+    "file": "grilled-corn.png"
+  },
+  {
+    "label": "Mushroom",
+    "file": "mushroom.png"
+  },
+  {
+    "label": "Sweet Corn",
+    "file": "sweet-corn.png"
+  },
+  {
+    "label": "Mayonnaise",
+    "file": "mayonnaise.png"
+  },
+  {
+    "label": "Garlic Sauce",
+    "file": "garlic-sauce.png"
+  },
+  {
+    "label": "Alfredo Sauce",
+    "file": "alfredo-sauce.png"
+  },
+  {
+    "label": "BBQ Sauce",
+    "file": "bbq-sauce.png"
+  },
+  {
+    "label": "Spicy Sauce",
+    "file": "spicy-sauce.png"
+  },
+  {
+    "label": "Andiamos Sauce",
+    "file": "andiamos-sauce.png"
+  },
+  {
+    "label": "Andiamos Pesto Sauce",
+    "file": "andiamos-pesto-sauce.png"
+  },
+  {
+    "label": "Cocktail Sauce",
+    "file": "cocktail-sauce.png"
+  },
+  {
+    "label": "Ketchup",
+    "file": "ketchup.png"
+  },
+  {
+    "label": "Mustard",
+    "file": "mustard.png"
+  },
+  {
+    "label": "Butter Spicy Sauce",
+    "file": "butter-spicy-sauce.png"
+  },
+  {
+    "label": "Fries",
+    "file": "fries.png"
+  },
+  {
+    "label": "Wedges",
+    "file": "wedges.png"
+  },
+  {
+    "label": "Curly Fries",
+    "file": "curly-fries.png"
+  },
+  {
+    "label": "Cole Slaw",
+    "file": "cole-slaw.png"
+  },
+  {
+    "label": "Hummus",
+    "file": "hummus.png"
+  },
+  {
+    "label": "Biwaz",
+    "file": "biwaz.png"
+  },
+  {
+    "label": "Grilled Tomato",
+    "file": "grilled-tomato.png"
+  },
+  {
+    "label": "Grilled Egg",
+    "file": "grilled-egg.png"
+  },
+  {
+    "label": "Bread",
+    "file": "bread.png"
+  },
+  {
+    "label": "Buns",
+    "file": "buns.png"
+  },
+  {
+    "label": "Rocca",
+    "file": "rocca.png"
+  },
+  {
+    "label": "Onion Rings",
+    "file": "onion-rings.png"
+  },
+  {
+    "label": "Mozzarella Sticks",
+    "file": "mozzarella-sticks.png"
+  },
+  {
+    "label": "Jalapeno Poppers",
+    "file": "jalapeno-poppers.png"
+  },
+  {
+    "label": "Chicken Wings",
+    "file": "chicken-wings.png"
+  },
+  {
+    "label": "Wings BBQ",
+    "file": "wings-bbq.png"
+  },
+  {
+    "label": "Wings Buffalo",
+    "file": "wings-buffalo.png"
+  },
+  {
+    "label": "Wings Honey Mustard",
+    "file": "wings-honey-mustard.png"
+  },
+  {
+    "label": "Wings Blue Cheese",
+    "file": "wings-blue-cheese.png"
+  }
+]
