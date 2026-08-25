@@ -8,11 +8,13 @@ import Footer   from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
 import CartToast from "./components/CartToast";
 import { CartProvider } from "./context/CartContext";
+import StartupIntro from "./components/StartupIntro";
 
 export default function App() {
   return (
     <CartProvider>
       <Navbar />
+      <StartupIntro />
       <Hero />
       <Menu />
       <Offers />
