@@ -26,6 +26,7 @@ body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(-
 img { display: block; max-width: 100%; object-fit: cover; }
 a   { text-decoration: none; color: inherit; }
 ul  { list-style: none; }
+.app-preloader { min-height: 100svh; background: linear-gradient(180deg, #3b1d1b 0%, #1b1113 24%, #050405 42%, #050405 66%, #1b1113 82%, #3b1d1b 100%); }
 
 /* ============================
    UTILITIES

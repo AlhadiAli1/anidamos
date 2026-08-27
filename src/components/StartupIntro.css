@@ -26,7 +26,8 @@
   z-index: -1;
 }
 
-.startup-intro-stage { position: relative; z-index: 2; width: min(88vw, 690px); height: 100%; margin: 0 auto; display: grid; place-items: center; perspective: 900px; }
+.startup-intro-stage { position: relative; z-index: 2; width: min(88vw, 690px); height: 100%; margin: 0 auto; display: grid; place-items: center; perspective: 900px; opacity: 0; transition: opacity .35s ease; }
+.startup-intro.video-ready .startup-intro-stage { opacity: 1; }
 .startup-intro-light { position: absolute; top: -30vh; left: 50%; width: 38vw; min-width: 360px; height: 125vh; background: linear-gradient(90deg, transparent, rgba(255, 176, 88, .18), transparent); filter: blur(24px); transform: translateX(-50%) rotate(17deg); animation: startupLight 4.2s cubic-bezier(.16, 1, .3, 1) both; }
 .startup-intro-smoke { position: absolute; width: 70vw; height: 30vh; border-radius: 50%; background: rgba(255, 222, 190, .09); filter: blur(52px); opacity: 0; }
 .startup-intro-smoke-one { left: -28vw; bottom: 10vh; animation: startupSmokeOne 4.2s ease-in-out both; }
@@ -34,6 +35,8 @@
 .startup-intro-particles { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255, 232, 194, .75) 0 1px, transparent 1.6px); background-size: 89px 113px; opacity: 0; animation: startupParticles 4.2s ease both; }
 
 .startup-intro-label { position: absolute; top: 12vh; max-width: 92vw; text-align: center; text-transform: uppercase; letter-spacing: .13em; font-size: clamp(1.5rem, 6vw, 2.5rem); font-weight: 700; color: rgba(255, 226, 186, .92); opacity: 0; animation: startupLabel 4.2s ease both; }
+.startup-intro-label, .startup-intro-title { animation-play-state: paused; }
+.startup-intro.video-ready .startup-intro-label, .startup-intro.video-ready .startup-intro-title { animation-play-state: running; }
 .startup-sandwich { position: relative; z-index: 1; width: min(72vw, 510px); height: min(38vw, 270px); min-height: 175px; opacity: 0; transform: translate3d(0, 50px, 0) scale(.85) rotateX(8deg); animation: startupSandwich 4.2s cubic-bezier(.16, 1, .3, 1) both; }
 .sandwich-layer { position: absolute; left: 5%; width: 90%; border-radius: 4px; box-shadow: inset 0 2px 0 rgba(255, 255, 255, .2), 0 6px 10px rgba(0, 0, 0, .3); }
 .sandwich-bun-top { top: 5%; height: 24%; background: linear-gradient(180deg, #f5c070, #b8642d 96%); border-radius: 5px 5px 2px 2px; }
