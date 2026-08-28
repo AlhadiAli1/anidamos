@@ -1,4 +1,4 @@
-import { StrictMode, useState } from "react";
+import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   defaultRestaurantConfig,
@@ -6,10 +6,6 @@ import {
   saveRestaurantConfig,
 } from "../src/data/restaurantConfig";
 import "./admin.css";
-
-const ADMIN_SESSION_KEY = "andiamo.admin-session";
-const ADMIN_USERNAME = "andiamos";
-const ADMIN_PASSWORD = "andiamos123";
 
 const categoryLabels = {
   burgers: "Burgers",
@@ -62,14 +58,22 @@ function Login({ onLogin }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-      window.sessionStorage.setItem(ADMIN_SESSION_KEY, "authenticated");
+    setError("");
+    try {
+      const response = await fetch("/.netlify/functions/admin-login", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data?.error || "Unable to sign in.");
       onLogin();
-      return;
+    } catch (error) {
+      setError(error.message);
     }
-    setError("Incorrect username or password.");
   };
 
   return (
@@ -183,8 +187,7 @@ function AdminDashboard() {
   const items = config.menu[activeCategory] || [];
 
   const logout = () => {
-    window.sessionStorage.removeItem(ADMIN_SESSION_KEY);
-    window.location.reload();
+    fetch("/.netlify/functions/admin-logout", { method: "POST", credentials: "include" }).finally(() => window.location.reload());
   };
 
   return (
@@ -234,8 +237,15 @@ function AdminDashboard() {
 }
 
 export default function AdminApp() {
-  const [authenticated, setAuthenticated] = useState(() => window.sessionStorage.getItem(ADMIN_SESSION_KEY) === "authenticated");
+  const [authenticated, setAuthenticated] = useState(null);
 
+  useEffect(() => {
+    fetch("/.netlify/functions/admin-me", { credentials: "include" })
+      .then((response) => setAuthenticated(response.ok))
+      .catch(() => setAuthenticated(false));
+  }, []);
+
+  if (authenticated === null) return <main className="login-shell">Checking access...</main>;
   return authenticated ? <AdminDashboard /> : <Login onLogin={() => setAuthenticated(true)} />;
 }
 

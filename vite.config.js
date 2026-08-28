@@ -72,6 +72,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         admin: fileURLToPath(new URL('./admin/index.html', import.meta.url)),
+        credit_management: fileURLToPath(new URL('./credit_management/index.html', import.meta.url)),
       },
     },
   },

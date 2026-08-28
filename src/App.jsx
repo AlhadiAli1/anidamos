@@ -1,14 +1,17 @@
-import Navbar   from "./components/Navbar";
-import Hero     from "./components/Hero";
-import Menu     from "./components/Menu";
-import Offers   from "./components/Offers";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Menu from "./components/Menu";
+import Offers from "./components/Offers";
 import Features from "./components/Features";
-import Contact  from "./components/Contact";
-import Footer   from "./components/Footer";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
 import CartToast from "./components/CartToast";
-import { CartProvider } from "./context/CartContext";
+import AuthModal from "./components/AuthModal";
+import AccountSection from "./components/AccountSection";
 import StartupIntro from "./components/StartupIntro";
+import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 import { getRestaurantConfig } from "./data/restaurantConfig";
 import { useEffect, useState } from "react";
 
@@ -73,17 +76,21 @@ export default function App() {
   }
 
   return (
-    <CartProvider>
-      <Navbar />
-      <StartupIntro />
-      <Hero />
-      <Menu />
-      <Offers />
-      <Features />
-      <Contact />
-      <Footer />
-      <CartDrawer />
-      <CartToast />
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <Navbar />
+        <StartupIntro />
+        <Hero />
+        <Menu />
+        <Offers />
+        <Features />
+        <AccountSection />
+        <Contact />
+        <Footer />
+        <CartDrawer />
+        <CartToast />
+        <AuthModal />
+      </CartProvider>
+    </AuthProvider>
   );
 }

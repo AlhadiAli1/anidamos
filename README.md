@@ -1,5 +1,17 @@
 # React + Vite
 
+## Local development
+
+Copy `.env.example` to `.env` and fill in the Supabase project URL, service-role key, and session secrets. Netlify Dev loads these server-side variables for the login and credit-management functions.
+
+Start the app with:
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:8888/`. Customer login uses `/.netlify/functions/login`; a missing Supabase configuration returns an error until `.env` is configured.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
