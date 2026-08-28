@@ -22,7 +22,7 @@ export const defaultRestaurantConfig = {
       "name": "Andiamo's Burger",
       "desc": "Grilled egg, grilled mushroom, grilled onions, cheddar cheese, lettuce, pickles, tomatoes, mustard, and ketchup.",
       "price": "650,000 LBP",
-      "img": "/images/pexels-4628466.jpg"
+      "img": "/images/andiamos%20burger.webp"
     },
     {
       "name": "Lebanese Burger",

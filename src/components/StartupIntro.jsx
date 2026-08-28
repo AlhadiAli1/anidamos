@@ -45,6 +45,9 @@ export default function StartupIntro() {
 
   const handleVideoReady = () => {
     setVideoReady(true);
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.2;
+    }
     if (introRef.current?.getBoundingClientRect().top < window.innerHeight) {
       videoRef.current?.play().catch(() => {});
     }
@@ -63,6 +66,7 @@ export default function StartupIntro() {
           autoPlay
           muted
           playsInline
+          playbackRate={1.2}
           onCanPlay={handleVideoReady}
           onEnded={finishIntro}
           preload="auto"
