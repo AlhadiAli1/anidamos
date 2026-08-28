@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartCtx";
 
 const WHATSAPP_NUMBER = "96171919234";
 

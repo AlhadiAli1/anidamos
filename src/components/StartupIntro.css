@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100svh;
+  height: 100svh;
   scroll-margin-top: 74px;
   overflow: hidden;
   isolation: isolate;
@@ -90,3 +91,4 @@
 @media (min-width: 769px) {
   .startup-intro { display: none; }
 }
+

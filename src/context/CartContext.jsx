@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { CartCtx } from "./cartCtx";
 
-const CartCtx = createContext(null);
 const CART_STORAGE_KEY = "andiamos-cart";
 
 function readStoredCart() {
@@ -76,5 +76,3 @@ export function CartProvider({ children }) {
     </CartCtx.Provider>
   );
 }
-
-export const useCart = () => useContext(CartCtx);

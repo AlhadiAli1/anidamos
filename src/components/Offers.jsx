@@ -1,4 +1,4 @@
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartCtx";
 import { getRestaurantConfig } from "../data/restaurantConfig";
 import { useRef } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";

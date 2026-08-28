@@ -35,5 +35,7 @@ export function useScrollReveal(scopeRef, deps = []) {
     });
 
     return () => observer.disconnect();
+    // deps is provided by callers as an array literal; kept parameterized for reuse.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

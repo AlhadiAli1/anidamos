@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getRestaurantConfig } from "../data/restaurantConfig";
-import { useCart } from "../context/CartContext";
+import { TABS } from "../data/menuTabs";
+import { useCart } from "../context/cartCtx";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const imageFocusClass = {
@@ -46,17 +47,6 @@ const getIngredientIcon = (ingredient) => {
   const value = ingredient.toLowerCase();
   return ingredientIcons.find(([pattern]) => pattern.test(value))?.[1];
 };
-
-export const TABS = [
-  { key: "burgers", label: "Burgers" },
-  { key: "sandwiches", label: "Sandwiches" },
-  { key: "pizza", label: "Pizza" },
-  { key: "mashiweh", label: "Mashiweh" },
-  { key: "crispy", label: "Crispy, Wings & Shrimps" },
-  { key: "family", label: "Family Combos" },
-  { key: "sides", label: "Appetizers" },
-  { key: "drinks", label: "Drinks" },
-];
 
 export default function Menu() {
   const [active, setActive] = useState("burgers");
@@ -197,7 +187,7 @@ export default function Menu() {
               <div className="menu-card-body">
                 <h3>{item.name}</h3>
                 <div className="ingredient-details" aria-label={`Ingredients: ${item.desc}`}>
-                  <ul className="ingredient-list">
+                  <ul className={`ingredient-list ingredient-cols-${Math.min(3, Math.max(1, getIngredients(item.desc).length))}`}>
                     {getIngredients(item.desc).map((ingredient) => {
                       const icon = getIngredientIcon(ingredient);
 

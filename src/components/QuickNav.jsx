@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TABS } from "./Menu";
+import { TABS } from "../data/menuTabs";
 
 export default function QuickNav() {
   const [open, setOpen] = useState(false);
