@@ -1,8 +1,27 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  # Run the Vite dev server (with HMR + the delivery route middleware) and let
+  # Netlify proxy it through localhost:8888 so both the pages and the Netlify
+  # Functions are available under one origin.
+  command = "npm run dev"
+  targetPort = 5173
+  autoLaunch = false
 
 [[redirects]]
-  from = "/*"
-  to   = "/index.html"
+  from = "/delivery-m"
+  to = "/delivery/manger.html"
+  status = 200
+
+[[redirects]]
+  from = "/delivery"
+  to = "/delivery/agent.html"
+  status = 200
+
+[[redirects]]
+  from = "/track"
+  to = "/delivery/track.html"
   status = 200

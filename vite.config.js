@@ -64,14 +64,47 @@ export async function saveRestaurantConfig(config) {
   }
 }
 
+// Dev-only routing so the standalone delivery pages work under `vite dev` /
+// `netlify dev` (production uses the equivalent redirects in netlify.toml).
+// `/delivery-m*` -> delivery manager page, `/delivery*` -> delivery agent page.
+// Only bare page routes are rewritten here; real file/asset/module requests
+// (e.g. /delivery/agent.jsx) must pass through untouched.
+function deliveryRoutingPlugin() {
+  // Bare navigation routes only (with optional trailing slash). Subpaths like
+  // /delivery/agent.jsx, /delivery/delivery.css or /@vite/... are left alone.
+  const routes = [
+    { match: /^\/delivery-m\/?$/, page: '/delivery/manger.html' },
+    { match: /^\/delivery\/?$/, page: '/delivery/agent.html' },
+    { match: /^\/track\/?$/, page: '/delivery/track.html' },
+  ]
+  return {
+    name: 'delivery-routing',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const pathname = (req.url || '').split('?')[0]
+        for (const route of routes) {
+          if (route.match.test(pathname)) {
+            req.url = route.page + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '')
+            break
+          }
+        }
+        next()
+      })
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), adminConfigApiPlugin()],
+  plugins: [react(), adminConfigApiPlugin(), deliveryRoutingPlugin()],
   build: {
     rollupOptions: {
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         admin: fileURLToPath(new URL('./admin/index.html', import.meta.url)),
+        'delivery-manager': fileURLToPath(new URL('./delivery/manger.html', import.meta.url)),
+        'delivery-agent': fileURLToPath(new URL('./delivery/agent.html', import.meta.url)),
+        'delivery-track': fileURLToPath(new URL('./delivery/track.html', import.meta.url)),
       },
     },
   },
