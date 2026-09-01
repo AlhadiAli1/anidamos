@@ -11,17 +11,37 @@ const STATUS_LABELS = {
 };
 
 const DELIVERY_AREAS = [
-  { name: "Baraachit", fee: 200000 },
-  { name: "Safad", fee: 200000 },
-  { name: "Tebnin", fee: 300000 },
+  { name: "Baraachit", fee: 150000 },
+  { name: "Safad", fee: 150000 },
+  { name: "Tebnin", fee: 200000 },
   { name: "Haris", fee: 350000 },
-  { name: "Jmayjme", fee: 250000 },
+  { name: "Majdal", fee: 250000 },
+  { name: "Jmayjme", fee: 200000 },
   { name: "Shakra", fee: 200000 },
   { name: "Sultaneye", fee: 250000 },
+  { name: "Bir salesel", fee: 350000 },
+  { name: "Ayta Jabal", fee: 300000 },
+  { name: "Sawene", fee: 350000 },
+  { name: "Kherbe", fee: 300000 },
+  { name: "Abrikha", fee: 350000 },
 ];
 
 function formatLL(amount) {
   return `${Number(amount || 0).toLocaleString("en-US")} LL`;
+}
+
+function formatPrice(price) {
+  const normalized = String(price || "").trim();
+  const numericPrice = Number(normalized.replace(/[^0-9.]/g, ""));
+  if (/\b(?:lbp|ll)\b/i.test(normalized) && Number.isFinite(numericPrice)) {
+    return `$${(numericPrice / 89000).toFixed(2)}`;
+  }
+  return normalized;
+}
+
+function formatLLAndUsd(amount) {
+  const value = Number(amount || 0);
+  return `${formatLL(value)} / $${(value / 89000).toFixed(2)}`;
 }
 
 function pad(n) {
@@ -38,7 +58,7 @@ function buildWhatsAppMessage(delivery, statusLabel, driverName) {
   const lines = [`🚚 *DELIVERY | ANDIAMOS*`, ``];
   lines.push(`🆔 Order: ${delivery.title}`);
   if (delivery.details) lines.push(`📋 Details: ${delivery.details}`);
-  lines.push(`💰 Price: ${delivery.price}`);
+  lines.push(`💰 Price: ${formatPrice(delivery.price)}`);
   if (delivery.address) lines.push(`📍 Address: ${delivery.address}`);
   if (delivery.customer_phone) lines.push(`👤 Customer: +${delivery.customer_phone}`);
   if (driverName) lines.push(`🧑🍳 Driver: ${driverName}`);
@@ -148,7 +168,7 @@ function DeliveryCard({ delivery, actions, agentActions = false }) {
         {delivery.manager_note && <p className="dl-driver-note">{delivery.manager_note}</p>}
         {delivery.details && <p className="dl-details">{delivery.details}</p>}
         <div className="dl-meta">
-          <span><b>Price:</b> {delivery.price}</span>
+          <span><b>Price:</b> {formatPrice(delivery.price)}</span>
           {delivery.address && <span><b>Address:</b> {delivery.address}</span>}
           <span><b>Delivery fee:</b> {formatLL(delivery.delivery_fee)}</span>
           {delivery.agent && delivery.agent.name && <span><b>Driver:</b> {delivery.agent.name}</span>}
@@ -383,7 +403,7 @@ function ManagerView({ token, onLogout }) {
         {creating && (
           <form className="dl-form" onSubmit={create}>
             <div className="dl-form-grid">
-              <label>Price<input name="price" value={form.price} onChange={update} placeholder="e.g. $15 or 850,000 LL" required /></label>
+              <label>Price<input name="price" value={form.price} onChange={update} placeholder="e.g. $15 or 89,000 LL ($1)" required /></label>
               <label>Assign to driver<select name="agentId" value={form.agentId} onChange={update} required>
                 <option value="">Select a driver…</option>
                 {agents.filter((a) => a.is_active).map((a) => <option key={a.id} value={a.id}>{a.username}</option>)}
@@ -542,7 +562,7 @@ function AgentView({ token, onLogout }) {
 
       <section className="dl-agent-summary" aria-label="Today's delivery earnings">
         <span>Today's profit ({deliveredToday.length} delivered)</span>
-        <strong>{formatLL(dailyProfit)}</strong>
+        <strong>{formatLLAndUsd(dailyProfit)}</strong>
       </section>
 
       {loading ? (

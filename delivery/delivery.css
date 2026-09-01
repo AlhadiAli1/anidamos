@@ -59,7 +59,7 @@ textarea { resize: vertical; }
 .dl-muted { color: #66736d; font: .95rem Arial, sans-serif; }
 
 .dl-list { display: grid; gap: 14px; margin-top: 18px; }
-.dl-order-list { max-height: min(62vh, 680px); overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; }
+.dl-order-list { max-height: min(78vh, 900px); overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; }
 .dl-order-list::-webkit-scrollbar { width: 8px; }
 .dl-order-list::-webkit-scrollbar-thumb { border-radius: 8px; background: #c6bda9; }
 .dl-card { border: 1px solid #d9d1bf; border-left: 5px solid #d9a45a; border-radius: 7px; background: #fff; padding: 16px; display: flex; gap: 16px; align-items: center; justify-content: space-between; }

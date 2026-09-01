@@ -6,13 +6,19 @@ const DELIVERY_FIELDS =
   "id, title, details, price, customer_phone, agent_id, address, delivery_fee, status, manager_note, created_at, accepted_at, delivered_at";
 const RESTAURANT_TIME_ZONE = "Asia/Beirut";
 export const DELIVERY_AREAS = Object.freeze({
-  Baraachit: 200000,
-  Safad: 200000,
-  Tebnin: 300000,
+  Baraachit: 150000,
+  Safad: 150000,
+  Tebnin: 200000,
   Haris: 350000,
-  Jmayjme: 250000,
+  Majdal: 250000,
+  Jmayjme: 200000,
   Shakra: 200000,
   Sultaneye: 250000,
+  "Bir salesel": 350000,
+  "Ayta Jabal": 300000,
+  Sawene: 350000,
+  Kherbe: 300000,
+  Abrikha: 350000,
 });
 
 function withDeliveryFee(delivery) {

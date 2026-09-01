@@ -78,7 +78,7 @@ async function main() {
   const createdDelivery = createRes.body.delivery;
   assert(createdDelivery.title === "Order 1", "delivery title starts at Order 1 with a new sequence");
   assert(createdDelivery.agent && createdDelivery.agent.phone === "96170000001", "delivery resolved to agent's phone server-side");
-  assert(createdDelivery.delivery_fee === 200000, "delivery area returns its fixed delivery fee");
+  assert(createdDelivery.delivery_fee === 150000, "delivery area returns its fixed delivery fee");
   assert(createdDelivery.status === "pending", "new delivery is pending");
 
   // -- Customer tracking only exposes order status information --
@@ -91,7 +91,7 @@ async function main() {
   const managerList = await call(deliveryApi(wrap("GET", null, { authorization: `Bearer ${managerToken}` })));
   assert(managerList.body.deliveries.length === 1, "manager lists 1 delivery");
   assert(managerList.body.deliveries[0].agent && managerList.body.deliveries[0].agent.name === "Alice", "manager sees agent name on delivery");
-  assert(managerList.body.deliveries[0].delivery_fee === 200000, "manager list includes the delivery fee");
+  assert(managerList.body.deliveries[0].delivery_fee === 150000, "manager list includes the delivery fee");
 
   // -- Manager can use a custom delivery area and fee --
   const customCreate = await call(deliveryApi(wrap("POST", {
